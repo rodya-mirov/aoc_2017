@@ -27,7 +27,7 @@ fn run_1b_with_input(input_str: &str) -> u64 {
     let half_length = digits.len() / 2;
 
     let mut total: u64 = 0;
-    for i in 0 .. half_length {
+    for i in 0..half_length {
         if digits[i] == digits[i + half_length] {
             total += (digits[i] as u64) * 2;
         }
