@@ -4,6 +4,8 @@ mod day1;
 mod day2;
 mod day3;
 mod day4;
+mod day5;
+mod day6;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -12,6 +14,8 @@ fn main() {
         println!("Usage: [run] [problemNumber]");
         println!("Example: cargo run --release -- 1a");
     }
+
+    let start = std::time::Instant::now();
 
     let out: String = match args.get(1).unwrap().as_str() {
         "1a" => day1::run_1a().to_string(),
@@ -26,10 +30,17 @@ fn main() {
         "4a" => day4::run_4a().to_string(),
         "4b" => day4::run_4b().to_string(),
 
+        "5a" => day5::run_5a().to_string(),
+        "5b" => day5::run_5b().to_string(),
+
+        "6a" => day6::run_6a().to_string(),
+        "6b" => day6::run_6b().to_string(),
+
         other => {
             format!("Unrecognized problem number {}", other)
         }
     };
 
     println!("{}", out);
+    println!("Process took {:.3} seconds", start.elapsed().as_secs_f32());
 }
