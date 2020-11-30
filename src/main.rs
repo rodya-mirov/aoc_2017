@@ -2,6 +2,7 @@ use std::env;
 
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -17,6 +18,9 @@ fn main() {
 
         "2a" => day2::run_2a().to_string(),
         "2b" => day2::run_2b().to_string(),
+
+        "3a" => day3::run_3a().to_string(),
+        "3b" => day3::run_3b().to_string(),
 
         other => {
             format!("Unrecognized problem number {}", other)

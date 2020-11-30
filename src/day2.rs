@@ -25,10 +25,13 @@ fn run_2b_with_input(input: &str) -> u64 {
     let mut total = 0;
 
     'main: for line in input.lines() {
-        let nums: Vec<u64> = line.split_whitespace().map(|t| t.parse().unwrap()).collect();
+        let nums: Vec<u64> = line
+            .split_whitespace()
+            .map(|t| t.parse().unwrap())
+            .collect();
 
-        for i in 1 .. nums.len() {
-            for j in 0 .. i {
+        for i in 1..nums.len() {
+            for j in 0..i {
                 let a = nums[i];
                 let b = nums[j];
 
