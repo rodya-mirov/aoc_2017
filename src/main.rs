@@ -8,6 +8,7 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -43,6 +44,9 @@ fn main() {
 
         "8a" => day8::run_8a().to_string(),
         "8b" => day8::run_8b().to_string(),
+
+        "9a" => day9::run_9a().to_string(),
+        "9b" => day9::run_9b().to_string(),
 
         other => {
             format!("Unrecognized problem number {}", other)
