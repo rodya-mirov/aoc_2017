@@ -176,7 +176,7 @@ pub fn run_3b() -> u64 {
 
 #[cfg(test)]
 mod tests {
-    use crate::day03::*;
+    use super::*;
 
     #[test]
     fn test_rings() {
