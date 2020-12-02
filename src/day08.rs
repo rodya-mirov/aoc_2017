@@ -1,4 +1,4 @@
-use nom::lib::std::collections::HashMap;
+use std::collections::HashMap;
 
 const INPUT: &str = include_str!("input/8.txt");
 

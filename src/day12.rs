@@ -1,5 +1,5 @@
-use nom::lib::std::collections::VecDeque;
 use std::collections::HashSet;
+use std::collections::VecDeque;
 
 const INPUT: &str = include_str!("input/12.txt");
 

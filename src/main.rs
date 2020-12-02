@@ -15,6 +15,7 @@ mod day12;
 mod day13;
 mod day14;
 mod day15;
+mod day16;
 
 mod lib;
 
@@ -73,6 +74,9 @@ fn main() {
 
         "15a" => day15::run_15a().to_string(),
         "15b" => day15::run_15b().to_string(),
+
+        "16a" => day16::run_16a().to_string(),
+        "16b" => day16::run_16b().to_string(),
 
         other => {
             format!("Unrecognized problem number {}", other)

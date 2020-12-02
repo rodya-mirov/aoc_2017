@@ -1,5 +1,5 @@
 use crate::lib::compute_knot_hash;
-use nom::lib::std::collections::HashSet;
+use std::collections::HashSet;
 
 const INPUT: &str = "hxtvlmkl";
 
