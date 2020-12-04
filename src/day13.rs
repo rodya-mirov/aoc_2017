@@ -10,12 +10,9 @@ mod parse {
 
     use super::Scanner;
 
-    use nom::{bytes::complete::tag, character::complete::digit1, sequence::tuple, IResult};
+    use nom::{bytes::complete::tag, sequence::tuple, IResult};
 
-    fn parse_num(input: &str) -> IResult<&str, i32> {
-        let (input, out) = digit1(input)?;
-        Ok((input, out.parse::<i32>().unwrap()))
-    }
+    use crate::lib::parse_i32 as parse_num;
 
     fn parse_line(input: &str) -> IResult<&str, Scanner> {
         let (input, (depth, _, range)) = tuple((parse_num, tag(": "), parse_num))(input)?;

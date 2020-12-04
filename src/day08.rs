@@ -3,8 +3,6 @@ use std::collections::HashMap;
 const INPUT: &str = include_str!("input/8.txt");
 
 mod parser {
-    use nom::character::complete::char;
-    use nom::sequence::preceded;
     use nom::{
         branch::alt,
         bytes::complete::{tag, take_while},
@@ -51,6 +49,8 @@ mod parser {
     }
 
     fn parse_line(input: &str) -> IResult<&str, Instruction> {
+        use crate::lib::parse_i32 as parse_num;
+
         let (input, action_lhs) = take_while(char::is_alphanumeric)(input)?;
 
         let (input, _) = take_while(char::is_whitespace)(input)?;
@@ -61,14 +61,6 @@ mod parser {
         ))(input)?;
 
         let (input, _) = take_while(char::is_whitespace)(input)?;
-
-        fn parse_num(input: &str) -> IResult<&str, i32> {
-            alt((
-                preceded(char('-'), take_while(char::is_numeric))
-                    .map(|b: &str| -(b.parse::<i32>().unwrap())),
-                take_while(char::is_numeric).map(|s: &str| s.parse::<i32>().unwrap()),
-            ))(input)
-        }
 
         let (input, action_rhs) = parse_num(input)?;
 

@@ -26,20 +26,13 @@ mod parse {
     use nom::{
         branch::alt,
         bytes::complete::tag,
-        character::complete::{anychar, char as exact_char, digit1, satisfy},
+        character::complete::{anychar, char as exact_char, satisfy},
         combinator::{eof, map},
         sequence::tuple,
         IResult,
     };
 
-    fn parse_num(input: &str) -> IResult<&str, i64> {
-        alt((
-            map(digit1, |s: &str| s.parse::<i64>().unwrap()),
-            map(tuple((exact_char('-'), digit1)), |(_, s): (_, &str)| {
-                -(s.parse::<i64>().unwrap())
-            }),
-        ))(input)
-    }
+    use crate::lib::parse_i64 as parse_num;
 
     fn parse_reg(input: &str) -> IResult<&str, char> {
         satisfy(char::is_alphabetic)(input)

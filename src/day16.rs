@@ -14,15 +14,13 @@ mod parse {
 
     use nom::{
         branch::alt,
-        character::complete::{anychar, char, digit1},
+        character::complete::{anychar, char},
         combinator::map,
         sequence::tuple,
         IResult,
     };
 
-    fn parse_num(input: &str) -> IResult<&str, usize> {
-        map(digit1, |token: &str| token.parse::<usize>().unwrap())(input)
-    }
+    use crate::lib::parse_usize as parse_num;
 
     fn parse_dance_move(input: &str) -> IResult<&str, DanceMove> {
         let spin_parser = map(tuple((char('s'), parse_num)), |(_, val)| {

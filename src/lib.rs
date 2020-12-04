@@ -1,5 +1,39 @@
 use std::ops::BitXor;
 
+mod parsing {
+    use nom::{
+        branch::alt,
+        character::complete::{char, digit1},
+        combinator::map,
+        sequence::pair,
+        IResult,
+    };
+
+    pub fn parse_i64(input: &str) -> IResult<&str, i64> {
+        alt((
+            map(pair(char('-'), digit1), |(_, s): (_, &str)| {
+                -s.parse::<i64>().unwrap()
+            }),
+            map(digit1, |s: &str| s.parse::<i64>().unwrap()),
+        ))(input)
+    }
+
+    pub fn parse_i32(input: &str) -> IResult<&str, i32> {
+        alt((
+            map(pair(char('-'), digit1), |(_, s): (_, &str)| {
+                -s.parse::<i32>().unwrap()
+            }),
+            map(digit1, |s: &str| s.parse::<i32>().unwrap()),
+        ))(input)
+    }
+
+    pub fn parse_usize(input: &str) -> IResult<&str, usize> {
+        map(digit1, |s: &str| s.parse::<usize>().unwrap())(input)
+    }
+}
+
+pub use parsing::{parse_i32, parse_i64, parse_usize};
+
 fn str_to_bytes_salted(input: &str) -> Vec<u8> {
     let mut out = input.as_bytes().to_vec();
     // Add the silly suffix
