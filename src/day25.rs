@@ -200,7 +200,7 @@ pub fn run_25a() -> usize {
 }
 
 pub fn run_25b() -> usize {
-    unimplemented!()
+    0
 }
 
 #[cfg(test)]
