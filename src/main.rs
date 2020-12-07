@@ -22,6 +22,7 @@ mod day19;
 mod day20;
 mod day21;
 mod day22;
+mod day23;
 
 mod lib;
 
@@ -102,11 +103,14 @@ fn main() {
         "22a" => day22::run_22a().to_string(),
         "22b" => day22::run_22b().to_string(),
 
+        "23a" => day23::run_23a().to_string(),
+        "23b" => day23::run_23b().to_string(),
+
         other => {
             format!("Unrecognized problem number {}", other)
         }
     };
 
     println!("{}", out);
-    println!("Process took {:.3} seconds", start.elapsed().as_secs_f32());
+    println!("Process took {:.3} seconds", start.elapsed().as_secs_f64());
 }
