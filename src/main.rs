@@ -23,6 +23,7 @@ mod day20;
 mod day21;
 mod day22;
 mod day23;
+mod day24;
 
 mod lib;
 
@@ -105,6 +106,9 @@ fn main() {
 
         "23a" => day23::run_23a().to_string(),
         "23b" => day23::run_23b().to_string(),
+
+        "24a" => day24::run_24a().to_string(),
+        "24b" => day24::run_24b().to_string(),
 
         other => {
             format!("Unrecognized problem number {}", other)
